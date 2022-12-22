@@ -36,7 +36,7 @@
 <div><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/7f98aa18c39e3c0aeff0cd40bc2e2ee8/raw/a67e4f8a638b66e5d32e6484a436f8d2dd413ba0/gistfile1.txt"><span>點這裡執行</span>:1aw14抽考缺考人員名單</a></div>
 <h2>w15</h2>
 <p>1,為何學習計算機程式需要建立個人倉儲?</p>
-<p>讓每個改版步驟都可以通過調閱來檢視</p>
+<p><span>A.能分散式的開發,免費,<span>一切公開,</span>每次push都能產生一個對應的版次，因此當出現大量麻煩的錯誤時或上級要求回歸前個設計時就能很方便的切換版</span></p>
 <p>2,全球資訊網能夠提供甚麼功能或有什麼優點?</p>
 <p>與時俱進</p>
 <p>3,Replit, stud.cycu.org 與 localhost 分別代表甚麼?</p>
@@ -195,8 +195,7 @@ grid(origx, origy, w, h, wnum, hnum, pixel=1, color="black")
 
 doc["power"].bind("click", launchAnimation)
 </script>
-<p></p>
-<h1>考試成績</h1>
+<p></p><h1>考試成績</h1>
 <h2>1a</h2>
 <h3>第4週</h3>
 <p>此程式是參考了老師的的(物件導向設計的學員名單與成績擷取)程式</p>
@@ -252,12 +251,18 @@ doc["power"].bind("click", launchAnimation)
 <p>所以要我們搬家到stud.cycu.org伺服器,然後在我成功git clone到stud.cycu.org創建了第二動態網站的時候卻不知道如何讓網頁中的python3 server.py一直開啟</p>
 <p>   <img alt="" height="295" src="/images/螢幕擷取畫面 2022-12-21 002934.png" width="247"/></p>
 <p>    <img alt="" height="187" src="/images/MicrosoftTeams-image (1).png" width="468"/></p>
-<p>然後在跟老師討論之下發現要在python3 server.py &amp; 下完之後 exit才可以不停止先前動作</p>
+<p>隨後在跟老師討論之下發現要在python3 server.py &amp; 下完之後 exit才可以不停止先前動作</p>
 <p> <img alt="" height="146" src="/images/螢幕擷取畫面 2022-12-21 001454.png" width="488"/></p>
-<p>緊接著我又發現我無法提交改版至倉儲,在與老師的再次討論下發現在設定[http][user]的時候不可以用windows文件打開設定一定要用內不只另設定不然無法推送改至github</p>
-<p><img alt="" height="143" src="/images/螢幕擷取畫面 2022-12-21 001817.png" width="529"/></p>
-<p></p>
-<p></p>
+<p>緊接著我又發現我無法提交改版至倉儲,在與老師的再次討論下發現在設定gitconfig[http][user]的時候不可以用windows文件打開設定一定要用內不只另設定不然無法推送改至github</p>
+<p><img alt="" height="141" src="/images/螢幕擷取畫面 2022-12-21 001817.png" width="522"/></p>
+<p>再重設gitconfig之後再使用git pull拉下版本合併</p>
+<p><img alt="" height="163" src="/images/MicrosoftTeams-image (2).png" width="509"/></p>
+<p>終於成功推送改版至github,但是之前在Replit做的時候創建了一個branch</p>
+<p><img alt="" height="184" src="/images/螢幕擷取畫面 2022-12-21 134132.png" width="273"/></p>
+<p>導致之後的git pull 與commit出現錯誤</p>
+<p><img alt="" height="81" src="/images/螢幕擷取畫面 2022-12-21 004054.png" width="507"/></p>
+<p><img alt="" height="204" src="/images/螢幕擷取畫面 2022-12-21 004349.png" width="510"/></p>
+<p>然後再詢問老師如何處理之後</p>
 <p></p><h1>cp2022H1</h1>
 <p>這個頁面 demo 如何在同一頁面下納入多個線上 Ace 編輯器與執行按鈕 (<a href="/downloads/practice_html.txt">practice_html.txt</a> 動態頁面超文件).</p>
 <p><a href="/downloads/practice_html.txt">practice_html.txt</a> 動態頁面超文件應該可以在啟動 Brython 時, 設定將 .py 檔案放入 downloads/py 目錄中引用.</p>
