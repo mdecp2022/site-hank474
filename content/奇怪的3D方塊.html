@@ -143,7 +143,53 @@ img.add_border {
         </header>
     <div id="tipue_search_content">抽點 << <a href='抽點.html'>Previous</a> <a href='test.html'>Next</a> >> test<br /><h1>奇怪的3D方塊</h1>
 <p><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/b49752d17bb373d8b4444e903c460a1e/raw/ea080310e5941c4e653b344d894b1c9858b4e2cb/Rotating%2520Block.py"><span>點這裡執行</span>w6 rotating block</a></p>
-<br />抽點 << <a href='抽點.html'>Previous</a> <a href='test.html'>Next</a> >> test</div>
+<!-- 納入 Brython 環境 -->
+<script src="./../cmsimde/static/brython.js"></script>
+<script src="./../cmsimde/static/brython_stdlib.js"></script>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+</script>
+<!-- 給定 brython_div1 division 標註 --></p>
+<div id="brython_div1"></div>
+<!-- 加入啟動按鈕後的 Rect 行走程式原始碼 -->
+<script type="text/python">
+# add <script type="text/javascript" src="https://unpkg.com/three@0.144.0/build/three.js">
+</script>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># add &lt;script type="text/javascript" src="https://unpkg.com/three@0.144.0/build/three.js"&gt;&lt;/script&gt;
+# put pyweb3d.py to downloads/py
+from browser import window, load, document
+from pyweb3d import *
+
+brython_div = document["brython_div1"]
+scene = Scene()
+camera = PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 )
+
+# Renderer
+renderer = WebGLRenderer()
+renderer.setSize(800, 600)
+brython_div &lt;= renderer.domElement
+
+geometry = BoxGeometry( 1, 2, 1 )
+material = MeshBasicMaterial( { 'color': 0xff0000 } )
+cube = Mesh( geometry, material )
+scene.add( cube )
+
+camera.position.z = 5
+
+def animate(time):
+    window.requestAnimationFrame( animate )
+
+    cube.rotation.x += 0.11
+    cube.rotation.y += 0.11
+
+    renderer.render( scene, camera )
+
+animate(0)</pre>
+<p><br/><br/></p><br />抽點 << <a href='抽點.html'>Previous</a> <a href='test.html'>Next</a> >> test</div>
         
     <!-- footer -->
       <div class="container">

@@ -143,7 +143,48 @@ img.add_border {
         </header>
     <div id="tipue_search_content">W11 << <a href='W11.html'>Previous</a> <a href='W12.html'>Next</a> >> W12<br /><h1>老師的繪畫方格</h1>
 <p><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/23cb848bd3efc8a917b1b122522c5a78/raw/9d127dc87d43708958a21b17843af87fef6e3a9d/gistfile1.txt"><span>點這裡執行</span>w11繪畫方格</a></p>
-<br />W11 << <a href='W11.html'>Previous</a> <a href='W12.html'>Next</a> >> W12</div>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import document as doc
+from browser import html
+canvas = html.CANVAS(width = 600, height = 600)
+canvas.id = "canvas"
+brython_div = doc["brython_div1"]
+brython_div &lt;= canvas
+canvas = doc["canvas"]
+ctx = canvas.getContext("2d")
+def dRect(lux, luy, w, h, s=1, c='#ff0000'):
+    ctx.lineWidth = s
+    ctx.strokeStyle = c
+    ctx.beginPath();
+    ctx.rect(lux, luy, w, h)
+    ctx.stroke();
+def draw_line(x1, y1, x2, y2, color="#ff0000"):
+    ctx.beginPath()
+    ctx.moveTo(x1, y1)
+    ctx.lineTo(x2, y2)
+    ctx.strokeStyle = color
+    ctx.stroke()
+def wText(x, y, t, s=14, c='#0000ff'):
+    ctx.font = str(s) + "px Arial";
+    ctx.fillText(t, x, y)
+def grid(startx, starty, w, h, wnum, hnum, pixel=1, color="#ff0000"):
+    for i in range(wnum+1):
+        for j in range(hnum+1):
+            yend = starty + h*(hnum)
+            xend = startx + w*(wnum)
+            x = startx + i*w
+            draw_line(x, starty, x, yend, color)
+            y = starty + j*h
+            draw_line(startx, y, xend, y, color)
+            #wText(w/2-10, y-w/2, str(j))
+            
+num = 15
+pixel = 1
+w = int(canvas.width/num) - pixel
+h = int(canvas.height/num) - pixel
+x = 1
+y = 1
+grid(x, y, w, h, num, num, pixel=1, color="black")</pre>
+<p></p><br />W11 << <a href='W11.html'>Previous</a> <a href='W12.html'>Next</a> >> W12</div>
         
     <!-- footer -->
       <div class="container">

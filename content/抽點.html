@@ -143,9 +143,111 @@ img.add_border {
         </header>
     <div id="tipue_search_content">W6 << <a href='W6.html'>Previous</a> <a href='奇怪的3D方塊.html'>Next</a> >> 奇怪的3D方塊<br /><h1>抽點</h1>
 <p><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/6ffcc2daa0df10df43d672fd0151f109/raw/90d6e812f8706967b47d4d4452bd575a1eeafd9d/%25E6%2596%25B0.cp%25E6%258A%25BD%25E9%25BB%259E"><span>點這裡執行</span>cp抽點</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># Python 的註解分為單行註解與多行, 單行註解可在字串前方放入 #
+'''多行註解則可以透過三個單引號前後標註字串或文字段落內容, 
+也可以使用三個雙引號作為多行註解的標註
+'''
+# 使用 import 導入 random 模組, 隨後就可以直接引用 random 模組的方法
+import random
+cp1a = "0747"
+# 宣告 url 變數值為字串, 此字串為取得 cp2022 1a 選課成員名單
+url = "https://nfu.cycu.org/?semester=1111&amp;courseno=" + cp1a + "&amp;column=True"
+# 利用上述已經宣告的 url 變數字串值, 作為 open() 函式的輸入變數, 可以連結至該網站
+# 連接 url 所代表字串的網站後, 再利用 read() 函式讀取該網站的內容, 即可取得 cp2022 1a 的選課成員學號
+# url 所屬的網站, 乃 69 中的一台虛擬主機 8/10ff-0-1-2, 並利用 Get 從教務主機取回課程註冊成員學號
+# 由於所取回的學號以跳行符號隔開, 因此取回的學號資料行, 再利用 split() 函式, 以 \n 跳行符號分割後
+# 所對應到 data 的資料型別將會是數列
+data = open(url).read().split("\n")
+# 經過檢查 data 數列, 發現最後一個 element 為空字串, 因此利用 [:-1] 去掉數列的最後一個元素, -1 代表數列最後一個元素的索引
+#print(data[:-1])
+# 設定一個變數, 與修課成員學號數列對應
+stud = data[:-1]
+# 使用 random 模組中的 shuffle() 函式, 以隨機的方式排列 stud 數列內容
+random.shuffle(stud)
+# 設定 num 與 5 對應, 或將 5 整數值存入 num 變數所對應的記憶體位址
+num = 5
+# 利用 for 重複迴圈與 range() 變數, 列印出 (利用 print() 函式) 已經隨機排列次序的 stud 數列的最前面 num 個學號值
+for i in range(num):
+    print(stud[i])</pre>
 <p><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/15b41241c5ef5b90504d49751d95c6e8/raw/6e778c2be3fc71d3c43980f1bdff8daa18fbae43/%25E6%2596%25B0.%25E6%258A%25BD5%25E5%2590%258D" rel="noreferrer noopener" tabindex="-1" target="_blank" title="https://mdecp2022.github.io/site-hank474/content/Brython.html?src=https://gist.githubusercontent.com/hank474/15b41241c5ef5b90504d49751d95c6e8/raw/6e778c2be3fc71d3c43980f1bdff8daa18fbae43/%25E6%2596%25B0.%25E6%258A%25BD5%25E5%2590%258D"><span>點這裡執行列出每</span>個人靜態網頁</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">brython_div1 &lt;= html.BUTTON("hello")
+brython_div1 &lt;= html.BR()
+brython_div1 &lt;= html.A("google", href="https://google.com")
+"""
+
+url = "https://mde.tw/studlist/2022fall/1a.txt"
+data = open(url).read().split("\n")
+mdecp2022 = "https://mdecp2022.github.io/site-"
+data = data[1:-1]
+for i in data:
+    stud = i.split("\t")
+    stud_num = stud[0]
+    github_acc = stud[1]
+    #print(stud_num, github_acc)
+    if github_acc == "":
+        github_acc = stud_num
+    site = mdecp2022 + github_acc
+    link = html.A(stud_num, href=site)
+    brython_div1 &lt;= link
+    brython_div1 &lt;= html.BR()from browser import document, html
+
+brython_div1 = document["brython_div2"]
+"""
+</pre>
 <p><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/8bf92c7f4686b50b1e11972cbc8362a9/raw/507071d4d4a1ede10dfdfaa411a0db154ea19090/random_draw.py&amp;src2=https://gist.githubusercontent.com/hank474/8bf92c7f4686b50b1e11972cbc8362a9/raw/b1854861f8399ce7daf471638f6f183907d0e94f/list.py"><span>點這裡執行</span>抽點程式與列出每個人靜態網頁程式結合</a></p>
-<br />W6 << <a href='W6.html'>Previous</a> <a href='奇怪的3D方塊.html'>Next</a> >> 奇怪的3D方塊</div>
+<p>SRC1</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># Python 的註解分為單行註解與多行, 單行註解可在字串前方放入 #
+'''多行註解則可以透過三個單引號前後標註字串或文字段落內容, 
+也可以使用三個雙引號作為多行註解的標註
+'''
+# 使用 import 導入 random 模組, 隨後就可以直接引用 random 模組的方法
+import random
+cp1a = "0747"
+# 宣告 url 變數值為字串, 此字串為取得 cp2022 1a 選課成員名單
+url = "https://nfu.cycu.org/?semester=1111&amp;courseno=" + cp1a + "&amp;column=True"
+# 利用上述已經宣告的 url 變數字串值, 作為 open() 函式的輸入變數, 可以連結至該網站
+# 連接 url 所代表字串的網站後, 再利用 read() 函式讀取該網站的內容, 即可取得 cp2022 1a 的選課成員學號
+# url 所屬的網站, 乃 69 中的一台虛擬主機 8/10ff-0-1-2, 並利用 Get 從教務主機取回課程註冊成員學號
+# 由於所取回的學號以跳行符號隔開, 因此取回的學號資料行, 再利用 split() 函式, 以 \n 跳行符號分割後
+# 所對應到 data 的資料型別將會是數列
+data = open(url).read().split("\n")
+# 經過檢查 data 數列, 發現最後一個 element 為空字串, 因此利用 [:-1] 去掉數列的最後一個元素, -1 代表數列最後一個元素的索引
+#print(data[:-1])
+# 設定一個變數, 與修課成員學號數列對應
+stud = data[:-1]
+# 使用 random 模組中的 shuffle() 函式, 以隨機的方式排列 stud 數列內容
+random.shuffle(stud)
+# 設定 num 與 5 對應, 或將 5 整數值存入 num 變數所對應的記憶體位址
+num = 5
+# 利用 for 重複迴圈與 range() 變數, 列印出 (利用 print() 函式) 已經隨機排列次序的 stud 數列的最前面 num 個學號值
+for i in range(num):
+    print(stud[i])</pre>
+<p>SRC2</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">brython_div1 &lt;= html.BUTTON("hello")
+brython_div1 &lt;= html.BR()
+brython_div1 &lt;= html.A("google", href="https://google.com")
+"""
+
+url = "https://mde.tw/studlist/2022fall/1a.txt"
+data = open(url).read().split("\n")
+mdecp2022 = "https://mdecp2022.github.io/site-"
+data = data[1:-1]
+for i in data:
+    stud = i.split("\t")
+    stud_num = stud[0]
+    github_acc = stud[1]
+    #print(stud_num, github_acc)
+    if github_acc == "":
+        github_acc = stud_num
+    site = mdecp2022 + github_acc
+    link = html.A(stud_num, href=site)
+    brython_div1 &lt;= link
+    brython_div1 &lt;= html.BR()from browser import document, html
+
+brython_div1 = document["brython_div2"]
+"""
+</pre>
+<p></p><br />W6 << <a href='W6.html'>Previous</a> <a href='奇怪的3D方塊.html'>Next</a> >> 奇怪的3D方塊</div>
         
     <!-- footer -->
       <div class="container">

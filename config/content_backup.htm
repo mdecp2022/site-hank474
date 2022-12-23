@@ -1,37 +1,366 @@
 <h1>About</h1>
 <p>41123147蔡承翰</p>
-<p>0</p>
 <p><span>此網站使用</span><span> stud.cycu.org編寫</span></p>
 <p>githib倉儲:<a href="https://github.com/mdecp2022/site-hank474">mdecp2022/site-hank474: site-hank474 created by GitHub Classroom</a></p>
-<p>cmsite: wcms use <a href="https://github.com/mdecycu/cmsimde">https://github.com/mdecycu/cmsimde</a> as submodule</p><h1>HW</h1>
+<p>cmsite: wcms use <a href="https://github.com/mdecycu/cmsimde">https://github.com/mdecycu/cmsimde</a> as submodule</p>
+<h1>HW</h1>
 <h2>W5</h2>
 <h3>密碼亂數</h3>
 <p><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/30c62a93156cde2b95f2ba0a46fe8829/raw/40bf3d979c6c7e826b9846d6cb8c77a4f345d2e8/password_generator.py"><span>點這裡執行</span>w5 passwod generator</a></p>
-<h2>W6</h2>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 導入亂數模組
+import random
+# 導入字串模組
+import string
+# 利用 def 關鍵字定義函式
+# 函式的輸入變數可以設定初始值
+def password_generator(size=4, chars=string.ascii_lowercase + string.digits):
+    # 函式內以多行註解說明函式功能
+    """Generate random password
+    """
+    # 利用 return 關鍵字將所產生的亂數字串傳回
+    return ''.join(random.choice(chars) for _ in range(size))
+# 建立一個變數與隨後的字串對應
+pass_string = "abcdefghkmnpqrstuwxyz123456789"
+cp_num = ["0747", "0761"]
+cad_num = ["0773", "0786"]
+def gen_acc_pass(course, course_num):
+    stud_list =[]
+    for num in course_num:
+        url = "https://nfu.cycu.org/?semester=1111&amp;courseno=" + num + "&amp;column=True"
+        class_list = open(url).read().split("\n")[:-1]
+        stud_list += class_list
+        #print(stud_list)
+    for stud_num in stud_list:
+        password = password_generator(4, pass_string)
+        #print(password)
+        account = course + stud_num
+        #print(account)
+        print(stud_num + "\t" + account + "\t" + password)
+gen_acc_pass("cp", cp_num)
+gen_acc_pass("cad", cad_num)</pre>
+<p></p><h2>W6</h2>
 <h3>抽點</h3>
 <p><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/6ffcc2daa0df10df43d672fd0151f109/raw/90d6e812f8706967b47d4d4452bd575a1eeafd9d/%25E6%2596%25B0.cp%25E6%258A%25BD%25E9%25BB%259E"><span>點這裡執行</span>cp抽點</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># Python 的註解分為單行註解與多行, 單行註解可在字串前方放入 #
+'''多行註解則可以透過三個單引號前後標註字串或文字段落內容, 
+也可以使用三個雙引號作為多行註解的標註
+'''
+# 使用 import 導入 random 模組, 隨後就可以直接引用 random 模組的方法
+import random
+cp1a = "0747"
+# 宣告 url 變數值為字串, 此字串為取得 cp2022 1a 選課成員名單
+url = "https://nfu.cycu.org/?semester=1111&amp;courseno=" + cp1a + "&amp;column=True"
+# 利用上述已經宣告的 url 變數字串值, 作為 open() 函式的輸入變數, 可以連結至該網站
+# 連接 url 所代表字串的網站後, 再利用 read() 函式讀取該網站的內容, 即可取得 cp2022 1a 的選課成員學號
+# url 所屬的網站, 乃 69 中的一台虛擬主機 8/10ff-0-1-2, 並利用 Get 從教務主機取回課程註冊成員學號
+# 由於所取回的學號以跳行符號隔開, 因此取回的學號資料行, 再利用 split() 函式, 以 \n 跳行符號分割後
+# 所對應到 data 的資料型別將會是數列
+data = open(url).read().split("\n")
+# 經過檢查 data 數列, 發現最後一個 element 為空字串, 因此利用 [:-1] 去掉數列的最後一個元素, -1 代表數列最後一個元素的索引
+#print(data[:-1])
+# 設定一個變數, 與修課成員學號數列對應
+stud = data[:-1]
+# 使用 random 模組中的 shuffle() 函式, 以隨機的方式排列 stud 數列內容
+random.shuffle(stud)
+# 設定 num 與 5 對應, 或將 5 整數值存入 num 變數所對應的記憶體位址
+num = 5
+# 利用 for 重複迴圈與 range() 變數, 列印出 (利用 print() 函式) 已經隨機排列次序的 stud 數列的最前面 num 個學號值
+for i in range(num):
+    print(stud[i])</pre>
 <p><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/15b41241c5ef5b90504d49751d95c6e8/raw/6e778c2be3fc71d3c43980f1bdff8daa18fbae43/%25E6%2596%25B0.%25E6%258A%25BD5%25E5%2590%258D" rel="noreferrer noopener" tabindex="-1" target="_blank" title="https://mdecp2022.github.io/site-hank474/content/Brython.html?src=https://gist.githubusercontent.com/hank474/15b41241c5ef5b90504d49751d95c6e8/raw/6e778c2be3fc71d3c43980f1bdff8daa18fbae43/%25E6%2596%25B0.%25E6%258A%25BD5%25E5%2590%258D"><span>點這裡執行列出每</span>個人靜態網頁</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">brython_div1 &lt;= html.BUTTON("hello")
+brython_div1 &lt;= html.BR()
+brython_div1 &lt;= html.A("google", href="https://google.com")
+"""
+
+url = "https://mde.tw/studlist/2022fall/1a.txt"
+data = open(url).read().split("\n")
+mdecp2022 = "https://mdecp2022.github.io/site-"
+data = data[1:-1]
+for i in data:
+    stud = i.split("\t")
+    stud_num = stud[0]
+    github_acc = stud[1]
+    #print(stud_num, github_acc)
+    if github_acc == "":
+        github_acc = stud_num
+    site = mdecp2022 + github_acc
+    link = html.A(stud_num, href=site)
+    brython_div1 &lt;= link
+    brython_div1 &lt;= html.BR()from browser import document, html
+
+brython_div1 = document["brython_div2"]
+"""
+</pre>
 <p><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/8bf92c7f4686b50b1e11972cbc8362a9/raw/507071d4d4a1ede10dfdfaa411a0db154ea19090/random_draw.py&amp;src2=https://gist.githubusercontent.com/hank474/8bf92c7f4686b50b1e11972cbc8362a9/raw/b1854861f8399ce7daf471638f6f183907d0e94f/list.py"><span>點這裡執行</span>抽點程式與列出每個人靜態網頁程式結合</a></p>
-<h3>奇怪的3D方塊</h3>
+<p>SRC1</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># Python 的註解分為單行註解與多行, 單行註解可在字串前方放入 #
+'''多行註解則可以透過三個單引號前後標註字串或文字段落內容, 
+也可以使用三個雙引號作為多行註解的標註
+'''
+# 使用 import 導入 random 模組, 隨後就可以直接引用 random 模組的方法
+import random
+cp1a = "0747"
+# 宣告 url 變數值為字串, 此字串為取得 cp2022 1a 選課成員名單
+url = "https://nfu.cycu.org/?semester=1111&amp;courseno=" + cp1a + "&amp;column=True"
+# 利用上述已經宣告的 url 變數字串值, 作為 open() 函式的輸入變數, 可以連結至該網站
+# 連接 url 所代表字串的網站後, 再利用 read() 函式讀取該網站的內容, 即可取得 cp2022 1a 的選課成員學號
+# url 所屬的網站, 乃 69 中的一台虛擬主機 8/10ff-0-1-2, 並利用 Get 從教務主機取回課程註冊成員學號
+# 由於所取回的學號以跳行符號隔開, 因此取回的學號資料行, 再利用 split() 函式, 以 \n 跳行符號分割後
+# 所對應到 data 的資料型別將會是數列
+data = open(url).read().split("\n")
+# 經過檢查 data 數列, 發現最後一個 element 為空字串, 因此利用 [:-1] 去掉數列的最後一個元素, -1 代表數列最後一個元素的索引
+#print(data[:-1])
+# 設定一個變數, 與修課成員學號數列對應
+stud = data[:-1]
+# 使用 random 模組中的 shuffle() 函式, 以隨機的方式排列 stud 數列內容
+random.shuffle(stud)
+# 設定 num 與 5 對應, 或將 5 整數值存入 num 變數所對應的記憶體位址
+num = 5
+# 利用 for 重複迴圈與 range() 變數, 列印出 (利用 print() 函式) 已經隨機排列次序的 stud 數列的最前面 num 個學號值
+for i in range(num):
+    print(stud[i])</pre>
+<p>SRC2</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">brython_div1 &lt;= html.BUTTON("hello")
+brython_div1 &lt;= html.BR()
+brython_div1 &lt;= html.A("google", href="https://google.com")
+"""
+
+url = "https://mde.tw/studlist/2022fall/1a.txt"
+data = open(url).read().split("\n")
+mdecp2022 = "https://mdecp2022.github.io/site-"
+data = data[1:-1]
+for i in data:
+    stud = i.split("\t")
+    stud_num = stud[0]
+    github_acc = stud[1]
+    #print(stud_num, github_acc)
+    if github_acc == "":
+        github_acc = stud_num
+    site = mdecp2022 + github_acc
+    link = html.A(stud_num, href=site)
+    brython_div1 &lt;= link
+    brython_div1 &lt;= html.BR()from browser import document, html
+
+brython_div1 = document["brython_div2"]
+"""
+</pre>
+<p></p><h3>奇怪的3D方塊</h3>
 <p><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/b49752d17bb373d8b4444e903c460a1e/raw/ea080310e5941c4e653b344d894b1c9858b4e2cb/Rotating%2520Block.py"><span>點這裡執行</span>w6 rotating block</a></p>
-<h3>test</h3>
+<!-- 納入 Brython 環境 -->
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+</script>
+<!-- 給定 brython_div1 division 標註 --></p>
+<div id="brython_div1"></div>
+<!-- 加入啟動按鈕後的 Rect 行走程式原始碼 -->
+<script type="text/python">
+# add <script type="text/javascript" src="https://unpkg.com/three@0.144.0/build/three.js">
+</script>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># add &lt;script type="text/javascript" src="https://unpkg.com/three@0.144.0/build/three.js"&gt;&lt;/script&gt;
+# put pyweb3d.py to downloads/py
+from browser import window, load, document
+from pyweb3d import *
+
+brython_div = document["brython_div1"]
+scene = Scene()
+camera = PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 )
+
+# Renderer
+renderer = WebGLRenderer()
+renderer.setSize(800, 600)
+brython_div &lt;= renderer.domElement
+
+geometry = BoxGeometry( 1, 2, 1 )
+material = MeshBasicMaterial( { 'color': 0xff0000 } )
+cube = Mesh( geometry, material )
+scene.add( cube )
+
+camera.position.z = 5
+
+def animate(time):
+    window.requestAnimationFrame( animate )
+
+    cube.rotation.x += 0.11
+    cube.rotation.y += 0.11
+
+    renderer.render( scene, camera )
+
+animate(0)</pre>
+<p><br/><br/></p><h3>test</h3>
 <p><a href="https://mdecp2022.github.io/site-hank474/content/Brython.html?src=https://gist.githubusercontent.com/hank474/8bf92c7f4686b50b1e11972cbc8362a9/raw/507071d4d4a1ede10dfdfaa411a0db154ea19090/random_draw.py&amp;src2=https://gist.githubusercontent.com/hank474/8bf92c7f4686b50b1e11972cbc8362a9/raw/b1854861f8399ce7daf471638f6f183907d0e94f/list.py"><span>點這裡執行</span>測試</a></p>
 <h2>W10</h2>
 <h3>作業程式</h3>
 <p><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/9f0bf6c173aca573f204eaf3061bb2b7/raw/97d2fc2bb9932ca96e1d927d5c107fb03bdd3b8c/gistfile1.txt"><span>點這裡執行</span>w10 hw1</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import ast
+
+# get stud_list first
+
+def get_stud(c_name):
+    courses = {"1a": "0747", "1b": "0761", "2a": "0773", "2b": "0786"}
+    #c_name = "1b"
+    c = courses[c_name]
+    url = "https://nfu.cycu.org/?semester=1111&amp;courseno=" + c + "&amp;column=True"
+    data = open(url).read().split("\n")
+    stud = data[:-1]
+    return stud
+    
+cp_stud = get_stud("1b")
+
+# get w10 quiz result
+cp_w10_quiz_url = "https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/a6825f13b1bb0b61e09e74dd117729eefe1d947f/20221110_cp1b_w10_quiz.json"
+
+def get_score(url):
+    json_data = open(url).read()
+    big_dict = ast.literal_eval(json_data)
+    data = big_dict["body"]["testuser"]
+    quiz_dict = {}
+    for i in data:
+        stud_id = data[i]["user_name"]
+        stud_score = int(float(data[i]["total_score"]))
+        quiz_dict[stud_id] = stud_score
+    return quiz_dict
+    
+cp_quiz = get_score(cp_w10_quiz_url)
+cp_abs = []
+for stud in cp_stud:
+    try:
+        print(stud, cp_quiz[stud])
+    except:
+        # 缺考者沒有 quiz 成績
+        print(stud, "缺")
+        cp_abs.append(stud)
+# 列出缺考名單
+print("="*20)
+print("以下為 w10 缺考名單:")
+for stud in cp_abs:
+    print(stud)
+</pre>
 <p><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/e934816cc574e6a2836eea62c1e7a4c8/raw/c4d9d9b97f92c1e7f8f94652b4a2fb20414b3fcc/gistfile1.txt"><span>點這裡執行</span>w10 hw2</a></p>
-<h2>W11</h2>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">A = [i for i in range(1,10,2)]
+print(A)</pre>
+<p><br/><br/></p><h2>W11</h2>
 <h3>老師的繪畫方格</h3>
 <p><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/23cb848bd3efc8a917b1b122522c5a78/raw/9d127dc87d43708958a21b17843af87fef6e3a9d/gistfile1.txt"><span>點這裡執行</span>w11繪畫方格</a></p>
-<h2>W12</h2>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import document as doc
+from browser import html
+canvas = html.CANVAS(width = 600, height = 600)
+canvas.id = "canvas"
+brython_div = doc["brython_div1"]
+brython_div &lt;= canvas
+canvas = doc["canvas"]
+ctx = canvas.getContext("2d")
+def dRect(lux, luy, w, h, s=1, c='#ff0000'):
+    ctx.lineWidth = s
+    ctx.strokeStyle = c
+    ctx.beginPath();
+    ctx.rect(lux, luy, w, h)
+    ctx.stroke();
+def draw_line(x1, y1, x2, y2, color="#ff0000"):
+    ctx.beginPath()
+    ctx.moveTo(x1, y1)
+    ctx.lineTo(x2, y2)
+    ctx.strokeStyle = color
+    ctx.stroke()
+def wText(x, y, t, s=14, c='#0000ff'):
+    ctx.font = str(s) + "px Arial";
+    ctx.fillText(t, x, y)
+def grid(startx, starty, w, h, wnum, hnum, pixel=1, color="#ff0000"):
+    for i in range(wnum+1):
+        for j in range(hnum+1):
+            yend = starty + h*(hnum)
+            xend = startx + w*(wnum)
+            x = startx + i*w
+            draw_line(x, starty, x, yend, color)
+            y = starty + j*h
+            draw_line(startx, y, xend, y, color)
+            #wText(w/2-10, y-w/2, str(j))
+            
+num = 15
+pixel = 1
+w = int(canvas.width/num) - pixel
+h = int(canvas.height/num) - pixel
+x = 1
+y = 1
+grid(x, y, w, h, num, num, pixel=1, color="black")</pre>
+<p></p><h2>W12</h2>
 <h3>參考</h3>
 <p><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/a5af95f622379099d5d72e30d1e265a6/raw/9615223abccf2a15b29cd8c3824b38e0f5cf702f/gistfile1.txt"><span>點這裡執行:</span>w11作業參考程式</a></p>
-<h2>W13</h2>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import ast
+# get stud_list first
+def get_stud(c_name):
+    courses = {"1a": "0747", "1b": "0761", "2a": "0773", "2b": "0786"}
+    #c_name = "1b"
+    c = courses[c_name]
+    url = "https://nfu.cycu.org/?semester=1111&amp;courseno=" + c + "&amp;column=True"
+    data = open(url).read().split("\n")
+    stud = data[:-1]
+    return stud
+    
+cp_stud = get_stud("1b")
+# get w10 quiz result
+cp_w11_quiz_url = "https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/8e59f90d8ff4f1ad4fecd4f7ee159f91eb6addf9/cp1b_w11_quiz_result.json"
+cp_w10_quiz_url = "https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/a6825f13b1bb0b61e09e74dd117729eefe1d947f/20221110_cp1b_w10_quiz.json"
+def get_score(url):
+    num_stud = 0
+    total_score = 0
+    json_data = open(url).read()
+    big_dict = ast.literal_eval(json_data)
+    data = big_dict["body"]["testuser"]
+    quiz_dict = {}
+    for i in data:
+        stud_id = data[i]["user_name"]
+        stud_score = int(float(data[i]["total_score"]))
+        quiz_dict[stud_id] = stud_score
+        num_stud = num_stud + 1
+        total_score = total_score + stud_score
+    return quiz_dict, num_stud, total_score
+    
+#cp_quiz, num_stud, total_score = get_score(cp_w10_quiz_url)
+cp_quiz, num_stud, total_score = get_score(cp_w11_quiz_url)
+cp_abs = []
+for stud in cp_stud:
+    try:
+        print(stud, cp_quiz[stud])
+    except:
+        # 缺考者沒有 quiz 成績
+        print(stud, "缺")
+        cp_abs.append(stud)
+print("\n考試平均分數為:", int(total_score/num_stud))
+# 列出缺考名單
+print("="*20)
+print("以下為 w10 缺考名單:")
+for stud in cp_abs:
+    print(stud)</pre>
+<p></p><h2>W13</h2>
 <h3>溫度轉換</h3>
 <p><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/b543dca427faafa9508ec31e8f6e1e8b/raw/029b1f8b5d1ce03f49f3dbd274b74027b6363f00/w13temp_ex1.py"><span>點這裡執行:</span>w13溫度轉換程式</a>ex1</p>
-<p><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/b543dca427faafa9508ec31e8f6e1e8b/raw/cc13a508c73ea94e43dc7203930d197f9b774a9b/w13temp_ex2.py"><span>點這裡執行:</span>w13溫度轉換程式</a>ex2</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">'''
+f-c*9/5+32
+c=(f-32)*5/9
+'''
+c = input("請輸入攝氏溫度值")
+print(type(c))
+c= float(c)
+print(c, c*9/5 +32)</pre>
 <p></p>
-<h2>W14</h2>
+<p><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/b543dca427faafa9508ec31e8f6e1e8b/raw/cc13a508c73ea94e43dc7203930d197f9b774a9b/w13temp_ex2.py"><span>點這裡執行:</span>w13溫度轉換程式</a>ex2</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">'''
+f-c*9/5+32
+c=(f-32)*5/9
+'''
+c = input("請輸入攝氏溫度值")
+print(type(c))
+c= float(c)
+print("你輸入的攝氏溫度:" + str(c),"等於華氏溫度:" + str(c*9/5 +32))</pre>
+<p><br/><br/></p>
+<p></p><h2>W14</h2>
 <h3>1a w14抽考成績與缺考人員名單</h3>
 <div><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/7f98aa18c39e3c0aeff0cd40bc2e2ee8/raw/a67e4f8a638b66e5d32e6484a436f8d2dd413ba0/gistfile1.txt"><span>點這裡執行</span>:1aw14抽考缺考人員名單</a></div>
 <h2>w15</h2>
@@ -197,7 +526,8 @@ grid(origx, origy, w, h, wnum, hnum, pixel=1, color="black")
 
 doc["power"].bind("click", launchAnimation)
 </script>
-<p></p><h1>考試成績</h1>
+<p></p>
+<h1>考試成績</h1>
 <h2>1a</h2>
 <h3>第4週</h3>
 <p>此程式是參考了老師的的(物件導向設計的學員名單與成績擷取)程式</p>
@@ -265,7 +595,8 @@ doc["power"].bind("click", launchAnimation)
 <p><img alt="" height="81" src="/images/螢幕擷取畫面 2022-12-21 004054.png" width="507"/></p>
 <p><img alt="" height="204" src="/images/螢幕擷取畫面 2022-12-21 004349.png" width="510"/></p>
 <p>然後再詢問老師如何處理之後</p>
-<p></p><h1>cp2022H1</h1>
+<p></p>
+<h1>cp2022H1</h1>
 <p>這個頁面 demo 如何在同一頁面下納入多個線上 Ace 編輯器與執行按鈕 (<a href="/downloads/practice_html.txt">practice_html.txt</a> 動態頁面超文件).</p>
 <p><a href="/downloads/practice_html.txt">practice_html.txt</a> 動態頁面超文件應該可以在啟動 Brython 時, 設定將 .py 檔案放入 downloads/py 目錄中引用.</p>
 <p>亦即將所有對應的 html 也使用 Brython 產生, 然後寫為 <a href="https://docs.python.org/3/tutorial/classes.html">class</a> 後, 在範例導入時透過 <a href="https://docs.python.org/3/tutorial/classes.html#instance-objects">instance</a> 引用.</p>

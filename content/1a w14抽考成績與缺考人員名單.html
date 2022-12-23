@@ -143,7 +143,46 @@ img.add_border {
         </header>
     <div id="tipue_search_content">W14 << <a href='W14.html'>Previous</a> <a href='w15.html'>Next</a> >> w15<br /><h1>1a w14抽考成績與缺考人員名單</h1>
 <div><a href="https://mdecp2022.github.io/site-hank474/content/cp2022.html?src=https://gist.githubusercontent.com/hank474/7f98aa18c39e3c0aeff0cd40bc2e2ee8/raw/a67e4f8a638b66e5d32e6484a436f8d2dd413ba0/gistfile1.txt"><span>點這裡執行</span>:1aw14抽考缺考人員名單</a></div>
-<br />W14 << <a href='W14.html'>Previous</a> <a href='w15.html'>Next</a> >> w15</div>
+<div>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import ast
+
+
+def get_stud(c_name):
+    courses = {"1a": "0747", "1b": "0761", "2a": "0773", "2b": "0786"}
+    c = courses[c_name]
+    url = "https://nfu.cycu.org/?semester=1111&amp;courseno=" + c + "&amp;column=True"
+    data = open(url).read().split("\n")
+    stud = data[:-1]
+    return stud
+    
+cp_stud = get_stud("1a")
+
+cp_w14_quiz_url = "https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/a48d36ae883bde8efd07b25bfddaed8f13200353/2022_1209_cp_w14_1a_quiz.json"
+
+def get_score(url):
+    json_data = open(url).read()
+    big_dict = ast.literal_eval(json_data)
+    data = big_dict["body"]["testuser"]
+    quiz_dict = {}
+    for i in data:
+        stud_id = data[i]["user_name"]
+        stud_score = int(float(data[i]["total_score"]))
+        quiz_dict[stud_id] = stud_score
+    return quiz_dict
+    
+cp_quiz = get_score(cp_w14_quiz_url)
+cp_abs = []
+for stud in cp_stud:
+    try:
+        print(stud, cp_quiz[stud])
+    except:
+        print(stud, "缺")
+        cp_abs.append(stud)
+print("="*20)
+print("以下為 w14 缺考名單:")
+for stud in cp_abs:
+    print(stud)</pre>
+</div><br />W14 << <a href='W14.html'>Previous</a> <a href='w15.html'>Next</a> >> w15</div>
         
     <!-- footer -->
       <div class="container">
